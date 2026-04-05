@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useSpring, useTransform, useElementScroll } from "framer-motion"; // I can use simple CSS if I don't want to add framer - but instructions imply high-end effects. 
-// Let's use pure JS/GSAP since I already have it and it's fast.
 
 export default function TracingBeam({ children }: { children: React.ReactNode }) {
   const scrollRef = useRef<HTMLDivElement>(null);
