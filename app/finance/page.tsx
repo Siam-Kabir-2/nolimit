@@ -18,15 +18,15 @@ import AnimatedSection from "@/app/components/AnimatedSection";
 const contactInfo = [
   {
     icon: Phone,
-    label: "Call Us",
+    label: "Appelez-nous",
     value: "+1 (800) NO-LIMIT",
-    sub: "Mon–Sat, 9am–7pm",
+    sub: "Lun–Sam, 9h–19h",
   },
   {
     icon: Mail,
-    label: "Email Us",
+    label: "Email",
     value: "hello@nolimitautos.com",
-    sub: "We reply within 2 hours",
+    sub: "Réponse sous 2 heures",
   },
   {
     icon: MapPin,
@@ -36,17 +36,17 @@ const contactInfo = [
   },
   {
     icon: Clock,
-    label: "Hours",
-    value: "Mon–Sat: 9am–7pm",
-    sub: "Sun: By Appointment",
+    label: "Horaires",
+    value: "Lun–Sam : 9h–19h",
+    sub: "Dim : Sur rendez-vous",
   },
 ];
 
 const enquiryTypes = [
-  { id: "purchase", label: "Purchase Enquiry", icon: Car },
-  { id: "finance", label: "Finance Options", icon: Zap },
-  { id: "test-drive", label: "Test Drive", icon: CheckCircle },
-  { id: "other", label: "General Enquiry", icon: MessageSquare },
+  { id: "purchase", label: "Demande d'achat", icon: Car },
+  { id: "finance", label: "Options Financement", icon: Zap },
+  { id: "test-drive", label: "Essai Routier", icon: CheckCircle },
+  { id: "other", label: "Demande Générale", icon: MessageSquare },
 ];
 
 export default function EnquirePage() {
@@ -66,24 +66,24 @@ export default function EnquirePage() {
   };
 
   const inputClass =
-    "w-full px-4 py-3.5 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-crimson/40 focus:bg-white/6 transition-all";
+    "w-full px-4 py-3.5 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-brand/40 focus:bg-white/6 transition-all";
 
   if (submitted) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background px-4">
         <AnimatedSection className="max-w-md text-center p-10 bg-surface rounded-3xl border border-white/8">
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-crimson/10 border border-crimson/20 flex items-center justify-center mb-6">
-            <CheckCircle className="w-7 h-7 text-crimson" />
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center mb-6">
+            <CheckCircle className="w-7 h-7 text-brand" />
           </div>
-          <h2 className="text-2xl font-black text-white mb-3">Message Received</h2>
+          <h2 className="text-2xl font-black text-white mb-3">Message Reçu</h2>
           <p className="text-sm text-white/40 leading-relaxed mb-8">
-            Thank you, <span className="text-white">{formData.name}</span>. One of our specialists
-            will be in touch within 2 hours at{" "}
+            Merci, <span className="text-white">{formData.name}</span>. L&apos;un de nos spécialistes
+            vous contactera sous 2 heures à l&apos;adresse{" "}
             <span className="text-white">{formData.email}</span>.
           </p>
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/20 mb-8">
             <Shield className="w-3 h-3" />
-            Your information is encrypted and secure
+            Vos informations sont cryptées et sécurisées
           </div>
           <button
             onClick={() => {
@@ -92,7 +92,7 @@ export default function EnquirePage() {
             }}
             className="px-6 py-3 bg-white/5 border border-white/10 text-white text-[11px] font-semibold uppercase tracking-widest rounded-full hover:bg-white/8 transition-all"
           >
-            Send Another Enquiry
+            Envoyer une autre demande
           </button>
         </AnimatedSection>
       </div>
@@ -103,23 +103,23 @@ export default function EnquirePage() {
     <div className="min-h-screen bg-background">
       {/* ─── Hero ─── */}
       <div className="relative pt-32 pb-16 overflow-hidden border-b border-white/5">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-crimson/4 blur-[200px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/3 w-96 h-96 bg-brand/4 blur-[200px] rounded-full pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="flex items-center gap-3 mb-5">
-              <span className="block w-8 h-px bg-crimson" />
-              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-crimson">
-                Get in Touch
+              <span className="block w-8 h-px bg-brand" />
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-brand">
+                Contactez-nous
               </span>
             </div>
             <h1 className="text-5xl sm:text-6xl font-black text-white tracking-tight leading-none">
-              Let&apos;s <span className="text-white/20">Talk.</span>
+              Parlons <span className="text-white/20">Ensemble.</span>
             </h1>
             <p className="mt-4 text-sm text-white/35 leading-relaxed max-w-lg">
-              Whether you&apos;re ready to acquire your next machine or simply have a question
-              — our specialists are here for you.
+              Que vous soyez prêt à acquérir votre prochaine machine ou que vous ayez simplement une question
+              — nos spécialistes sont là pour vous.
             </p>
           </AnimatedSection>
         </div>
@@ -135,7 +135,7 @@ export default function EnquirePage() {
               {/* Enquiry type selector */}
               <div className="mb-8">
                 <p className="text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-3">
-                  Type of Enquiry
+                  Type de Demande
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {enquiryTypes.map(({ id, label, icon: Icon }) => (
@@ -145,11 +145,11 @@ export default function EnquirePage() {
                       onClick={() => setEnquiryType(id)}
                       className={`flex flex-col items-center gap-2 px-3 py-4 rounded-xl text-center transition-all duration-200 ${
                         enquiryType === id
-                          ? "bg-crimson/15 border border-crimson/30 text-white"
+                          ? "bg-brand/15 border border-brand/30 text-white"
                           : "bg-white/3 border border-white/6 text-white/35 hover:text-white/60 hover:border-white/15"
                       }`}
                     >
-                      <Icon className={`w-4 h-4 ${enquiryType === id ? "text-crimson" : ""}`} strokeWidth={1.5} />
+                      <Icon className={`w-4 h-4 ${enquiryType === id ? "text-brand" : ""}`} strokeWidth={1.5} />
                       <span className="text-[10px] font-semibold tracking-wide leading-tight">{label}</span>
                     </button>
                   ))}
@@ -161,7 +161,7 @@ export default function EnquirePage() {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input
                     type="text"
-                    placeholder="Full Name *"
+                    placeholder="Nom Complet *"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -169,7 +169,7 @@ export default function EnquirePage() {
                   />
                   <input
                     type="tel"
-                    placeholder="Phone Number"
+                    placeholder="Numéro de Téléphone"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className={inputClass}
@@ -178,7 +178,7 @@ export default function EnquirePage() {
 
                 <input
                   type="email"
-                  placeholder="Email Address *"
+                  placeholder="Adresse Email *"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -187,14 +187,14 @@ export default function EnquirePage() {
 
                 <input
                   type="text"
-                  placeholder="Vehicle of Interest (Optional)"
+                  placeholder="Véhicule d'Intérêt (Optionnel)"
                   value={formData.vehicle}
                   onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
                   className={inputClass}
                 />
 
                 <textarea
-                  placeholder="Your message..."
+                  placeholder="Votre message..."
                   rows={4}
                   required
                   value={formData.message}
@@ -205,13 +205,13 @@ export default function EnquirePage() {
                 <div className="flex items-center justify-between pt-2">
                   <div className="flex items-center gap-2 text-[10px] text-white/20">
                     <Shield className="w-3 h-3" />
-                    Encrypted & Secure
+                    Crypté & Sécurisé
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-crimson hover:bg-crimson-bright text-white text-[12px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:shadow-[0_0_30px_oklch(60%_0.25_20/0.4)] active:scale-[0.98]"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-brand hover:bg-brand-bright text-white text-[12px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:shadow-[0_0_30px_oklch(65%_0.22_55/0.4)] active:scale-[0.98]"
                   >
-                    Send Enquiry
+                    Envoyer la demande
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -245,16 +245,16 @@ export default function EnquirePage() {
 
             {/* Premium service note */}
             <AnimatedSection delay={0.2}>
-              <div className="p-6 rounded-2xl border border-crimson/15 bg-crimson/5">
+              <div className="p-6 rounded-2xl border border-brand/15 bg-brand/5">
                 <div className="flex items-center gap-2 mb-3">
-                  <Zap className="w-4 h-4 text-crimson" fill="currentColor" />
-                  <p className="text-[11px] font-bold text-crimson uppercase tracking-widest">
-                    Concierge Service
+                  <Zap className="w-4 h-4 text-brand" fill="currentColor" />
+                  <p className="text-[11px] font-bold text-brand uppercase tracking-widest">
+                    Service Conciergerie
                   </p>
                 </div>
                 <p className="text-sm text-white/50 leading-relaxed">
-                  Every client receives a dedicated specialist who will guide you through the
-                  entire acquisition process — from shortlisting to delivery.
+                  Chaque client bénéficie d&apos;un spécialiste dédié qui vous guidera tout au long du
+                  processus d&apos;acquisition — de la sélection à la livraison.
                 </p>
               </div>
             </AnimatedSection>

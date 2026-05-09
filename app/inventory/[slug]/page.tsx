@@ -58,7 +58,7 @@ function ImageGallery({ vehicle }: { vehicle: Vehicle }) {
               onClick={() => setActiveIndex(i)}
               className={`relative w-20 h-14 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
                 i === activeIndex
-                  ? "border-crimson"
+                  ? "border-brand"
                   : "border-transparent opacity-60 hover:opacity-100"
               }`}
             >
@@ -95,24 +95,24 @@ function SpecGrid({ vehicle }: { vehicle: Vehicle }) {
   }, []);
 
   const specs = [
-    { icon: Settings, label: "Engine", value: vehicle.engine },
-    { icon: Gauge, label: "Horsepower", value: `${vehicle.horsepower} HP` },
-    { icon: Zap, label: "Torque", value: vehicle.torque },
-    { icon: Gauge, label: "0-60 mph", value: vehicle.zeroToSixty },
+    { icon: Settings, label: "Moteur", value: vehicle.engine },
+    { icon: Gauge, label: "Puissance", value: `${vehicle.horsepower} CV` },
+    { icon: Zap, label: "Couple", value: vehicle.torque },
+    { icon: Gauge, label: "0-100 km/h", value: vehicle.zeroToSixty },
     { icon: Settings, label: "Transmission", value: vehicle.transmission },
-    { icon: Fuel, label: "Drivetrain", value: vehicle.drivetrain },
-    { icon: Fuel, label: "Fuel Type", value: vehicle.fuelType },
-    { icon: Fuel, label: "MPG", value: vehicle.mpg },
-    { icon: Calendar, label: "Year", value: vehicle.year.toString() },
-    { icon: Palette, label: "Color", value: vehicle.color },
-    { icon: Gauge, label: "Mileage", value: formatMileage(vehicle.mileage) },
-    { icon: Settings, label: "Category", value: vehicle.category.charAt(0).toUpperCase() + vehicle.category.slice(1) },
+    { icon: Fuel, label: "Transmission", value: vehicle.drivetrain },
+    { icon: Fuel, label: "Carburant", value: vehicle.fuelType },
+    { icon: Fuel, label: "Conso.", value: vehicle.mpg },
+    { icon: Calendar, label: "Année", value: vehicle.year.toString() },
+    { icon: Palette, label: "Couleur", value: vehicle.color },
+    { icon: Gauge, label: "Kilométrage", value: formatMileage(vehicle.mileage) },
+    { icon: Settings, label: "Catégorie", value: vehicle.category.charAt(0).toUpperCase() + vehicle.category.slice(1) },
   ];
 
   return (
     <div ref={specsRef}>
       <h2 className="text-xl font-bold text-white mb-4 font-mono uppercase tracking-wider">
-        Technical Specifications
+        Caractéristiques Techniques
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
         {specs.map((spec) => {
@@ -123,7 +123,7 @@ function SpecGrid({ vehicle }: { vehicle: Vehicle }) {
               className="spec-cell tech-cell p-4 opacity-0"
             >
               <div className="flex items-center gap-2 mb-1">
-                <Icon className="w-3.5 h-3.5 text-crimson" />
+                <Icon className="w-3.5 h-3.5 text-brand" />
                 <span className="text-[10px] uppercase tracking-wider text-steel">
                   {spec.label}
                 </span>
@@ -146,11 +146,11 @@ function FloatingCTA({ vehicle }: { vehicle: Vehicle }) {
           className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 bg-white/10 text-white font-semibold rounded-xl text-sm hover:bg-white/15 transition-all"
         >
           <Phone className="w-4 h-4" />
-          Call Now
+          Appeler
         </a>
-        <button className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 bg-crimson text-white font-semibold rounded-xl text-sm hover:bg-crimson-bright transition-all pulse-glow">
+        <button className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 bg-brand text-white font-semibold rounded-xl text-sm hover:bg-brand-bright transition-all pulse-glow">
           <MessageSquare className="w-4 h-4" />
-          Inquire
+          S&apos;informer
         </button>
       </div>
     </div>
@@ -166,15 +166,15 @@ export default function VehicleDetailPage() {
     return (
       <div className="pt-24 pb-16 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Vehicle Not Found</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">Véhicule non trouvé</h1>
           <p className="text-steel mb-8">
-            The vehicle you&apos;re looking for is no longer available.
+            Le véhicule que vous recherchez n&apos;est plus disponible.
           </p>
           <Link
             href="/inventory"
-            className="px-6 py-3 bg-crimson text-white rounded-xl text-sm font-medium hover:bg-crimson-bright transition-all"
+            className="px-6 py-3 bg-brand text-white rounded-xl text-sm font-medium hover:bg-brand-bright transition-all"
           >
-            Browse Inventory
+            Parcourir l&apos;Inventaire
           </Link>
         </div>
       </div>
@@ -195,7 +195,7 @@ export default function VehicleDetailPage() {
             className="inline-flex items-center gap-2 text-sm text-steel hover:text-white transition-colors mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Inventory
+            Retour à l&apos;Inventaire
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -205,7 +205,7 @@ export default function VehicleDetailPage() {
 
               {/* Description */}
               <div className="p-6 bg-surface rounded-2xl border border-white/5">
-                <h2 className="text-lg font-bold text-white mb-3">About This Vehicle</h2>
+                <h2 className="text-lg font-bold text-white mb-3">À propos de ce véhicule</h2>
                 <p className="text-sm text-silver leading-relaxed">
                   {vehicle.description}
                 </p>
@@ -226,7 +226,7 @@ export default function VehicleDetailPage() {
                       <p className="text-sm text-steel mt-1">{vehicle.color}</p>
                     </div>
                     <div className="flex gap-2">
-                      <button className="p-2 rounded-lg bg-white/5 text-steel hover:text-crimson transition-colors">
+                      <button className="p-2 rounded-lg bg-white/5 text-steel hover:text-brand transition-colors">
                         <Heart className="w-5 h-5" />
                       </button>
                       <button className="p-2 rounded-lg bg-white/5 text-steel hover:text-white transition-colors">
@@ -235,7 +235,7 @@ export default function VehicleDetailPage() {
                     </div>
                   </div>
 
-                  <div className="text-3xl font-bold text-crimson mb-1">
+                  <div className="text-3xl font-bold text-brand mb-1">
                     {formatPrice(vehicle.price)}
                   </div>
                   <p className="text-xs text-steel">
@@ -246,51 +246,51 @@ export default function VehicleDetailPage() {
                   <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/5">
                     <div className="text-center">
                       <div className="text-lg font-bold text-white">{vehicle.horsepower}</div>
-                      <div className="text-[10px] uppercase text-steel tracking-wider">Horsepower</div>
+                      <div className="text-[10px] uppercase text-steel tracking-wider">Chevaux</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-white">{vehicle.torque}</div>
-                      <div className="text-[10px] uppercase text-steel tracking-wider">Torque</div>
+                      <div className="text-[10px] uppercase text-steel tracking-wider">Couple</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-white">{vehicle.zeroToSixty}</div>
-                      <div className="text-[10px] uppercase text-steel tracking-wider">0-60 mph</div>
+                      <div className="text-[10px] uppercase text-steel tracking-wider">0-100 km/h</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Desktop CTAs */}
                 <div className="hidden lg:flex flex-col gap-3">
-                  <button className="w-full py-4 bg-crimson text-white font-semibold rounded-xl text-sm hover:bg-crimson-bright transition-all hover:shadow-[0_0_30px_oklch(60%_0.25_20/0.4)]">
+                  <button className="w-full py-4 bg-brand text-white font-semibold rounded-xl text-sm hover:bg-brand-bright transition-all hover:shadow-[0_0_30px_oklch(65%_0.22_55/0.4)]">
                     <MessageSquare className="w-4 h-4 inline mr-2" />
-                    Send Inquiry
+                    Envoyer une demande
                   </button>
                   <a
                     href="tel:+15551234567"
                     className="w-full py-4 bg-white/5 text-white font-semibold rounded-xl text-sm text-center border border-white/10 hover:bg-white/10 transition-all"
                   >
                     <Phone className="w-4 h-4 inline mr-2" />
-                    Call (555) 123-4567
+                    Appeler le (555) 123-4567
                   </a>
                   <Link
                     href="/finance"
                     className="w-full py-4 bg-white/5 text-white font-semibold rounded-xl text-sm text-center border border-white/10 hover:bg-white/10 transition-all"
                   >
-                    Apply for Financing
+                    Demander un Financement
                   </Link>
                 </div>
 
                 {/* Trade-in CTA */}
-                <div className="p-5 bg-crimson/5 border border-crimson/20 rounded-2xl">
-                  <h3 className="text-sm font-bold text-white mb-1">Have a Trade-In?</h3>
+                <div className="p-5 bg-brand/5 border border-brand/20 rounded-2xl">
+                  <h3 className="text-sm font-bold text-white mb-1">Vous avez une Reprise ?</h3>
                   <p className="text-xs text-steel mb-3">
-                    Get an instant estimate on your current vehicle.
+                    Obtenez une estimation immédiate pour votre véhicule.
                   </p>
                   <Link
                     href="/sell-my-car"
-                    className="inline-flex items-center text-xs font-semibold text-crimson hover:text-crimson-bright transition-colors"
+                    className="inline-flex items-center text-xs font-semibold text-brand hover:text-brand-bright transition-colors"
                   >
-                    Get Trade-In Value →
+                    Obtenir la Valeur de Reprise →
                   </Link>
                 </div>
               </div>
@@ -301,14 +301,14 @@ export default function VehicleDetailPage() {
           {similarVehicles.length > 0 && (
             <div className="mt-16">
               <h2 className="text-2xl font-bold text-white mb-6">
-                Similar <span className="text-crimson">Vehicles</span>
+                Véhicules <span className="text-brand">Similaires</span>
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {similarVehicles.map((car) => (
                   <Link
                     key={car.slug}
                     href={`/inventory/${car.slug}`}
-                    className="group block rounded-2xl overflow-hidden bg-surface border border-white/5 hover:border-crimson/20 transition-all"
+                    className="group block rounded-2xl overflow-hidden bg-surface border border-white/5 hover:border-brand/20 transition-all"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <Image
@@ -321,14 +321,14 @@ export default function VehicleDetailPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60" />
                     </div>
                     <div className="p-4">
-                      <h3 className="text-sm font-bold text-white group-hover:text-crimson-bright transition-colors truncate">
+                      <h3 className="text-sm font-bold text-white group-hover:text-brand-bright transition-colors truncate">
                         {car.name}
                       </h3>
                       <div className="flex items-center justify-between mt-2">
                         <span className="text-base font-bold text-white">
                           {formatPrice(car.price)}
                         </span>
-                        <span className="text-xs text-steel">{car.horsepower} HP</span>
+                        <span className="text-xs text-steel">{car.horsepower} CV</span>
                       </div>
                     </div>
                   </Link>

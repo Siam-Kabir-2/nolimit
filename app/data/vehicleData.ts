@@ -48,7 +48,7 @@ export const vehicles: Vehicle[] = [
     featured: true,
     newArrival: true,
     description:
-      "The ultimate expression of Lamborghini's engineering prowess. The Aventador SVJ combines raw power with aerodynamic perfection, delivering an unmatched driving experience on both road and track.",
+      "L'expression ultime de l'ingénierie Lamborghini. L'Aventador SVJ combine puissance brute et perfection aérodynamique, offrant une expérience de conduite inégalée sur route et sur circuit.",
     topSpeed: "350 km/h",
   },
   {
@@ -74,7 +74,7 @@ export const vehicles: Vehicle[] = [
     featured: true,
     newArrival: true,
     description:
-      "Born on the track, perfected for the road. The GT3 RS features the most powerful naturally-aspirated engine ever fitted to a 911, wrapped in an aerodynamic masterpiece.",
+      "Née sur circuit, perfectionnée pour la route. La GT3 RS est équipée du moteur atmosphérique le plus puissant jamais monté sur une 911, enveloppé dans un chef-d'œuvre aérodynamique.",
     topSpeed: "296 km/h",
   },
   {
@@ -100,7 +100,7 @@ export const vehicles: Vehicle[] = [
     featured: true,
     newArrival: false,
     description:
-      "The most powerful AMG V8 series production engine ever. The GT Black Series redefines what's possible from a front-engine sports car with its flat-plane crankshaft and race-bred aerodynamics.",
+      "Le moteur V8 de série AMG le plus puissant jamais conçu. La GT Black Series redéfinit les limites d'une voiture de sport à moteur avant avec son vilebrequin plat et son aérodynamisme issu de la course.",
     topSpeed: "325 km/h",
   },
   {
@@ -126,7 +126,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: true,
     description:
-      "The M4 Competition xDrive delivers breathtaking acceleration with the poise and precision that defines M. Its twin-turbo inline-six produces a symphonic soundtrack.",
+      "La M4 Competition xDrive offre une accélération fulgurante avec l'équilibre et la précision qui définissent la gamme M. Son six cylindres en ligne biturbo produit une symphonie mécanique.",
     topSpeed: "290 km/h",
   },
   {
@@ -152,7 +152,7 @@ export const vehicles: Vehicle[] = [
     featured: true,
     newArrival: true,
     description:
-      "A tribute to Ferrari's most acclaimed engine family. The F8 Tributo is the most powerful V8 in Maranello history, delivering 710 hp of pure Italian excellence.",
+      "Un hommage à la famille de moteurs la plus acclamée de Ferrari. La F8 Tributo est le V8 le plus puissant de l'histoire de Maranello, délivrant 710 ch de pure excellence italienne.",
     topSpeed: "340 km/h",
   },
   {
@@ -178,7 +178,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: true,
     description:
-      "The future of performance, electrified. The RS e-tron GT combines Audi's signature design language with instant electric torque for a silent but deadly driving experience.",
+      "Le futur de la performance, électrifié. L'RS e-tron GT combine le design signature d'Audi avec un couple électrique instantané pour une expérience de conduite silencieuse mais redoutable.",
     topSpeed: "250 km/h",
   },
   {
@@ -204,7 +204,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: false,
     description:
-      "Race car for the road. The Huracán STO brings Super Trofeo and GT3 racing technology to a street-legal car with incredible aerodynamic downforce.",
+      "Une voiture de course pour la route. L'Huracán STO apporte la technologie de course Super Trofeo et GT3 à une voiture homologuée pour la rue avec un appui aérodynamique incroyable.",
     topSpeed: "310 km/h",
   },
   {
@@ -230,7 +230,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: false,
     description:
-      "The benchmark for electric performance sedans. The Taycan Turbo S delivers Porsche's legendary driving dynamics with zero emissions and breathtaking acceleration.",
+      "La référence des berlines électriques de performance. La Taycan Turbo S offre la dynamique de conduite légendaire de Porsche avec zéro émission et une accélération à couper le souffle.",
     topSpeed: "260 km/h",
   },
   {
@@ -256,7 +256,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: true,
     description:
-      "Sculpted by air, driven by technology. The 720S represents the pinnacle of McLaren's relentless pursuit of lightness and performance, with a carbon fiber monocage at its core.",
+      "Sculptée par l'air, pilotée par la technologie. La 720S représente le sommet de la quête incessante de légèreté et de performance de McLaren, avec une monocoque en fibre de carbone en son cœur.",
     topSpeed: "341 km/h",
   },
   {
@@ -282,7 +282,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: false,
     description:
-      "Grand touring meets M performance. The M8 Competition combines luxury with raw power, delivering 617 hp through an advanced AWD system for all-weather supercar performance.",
+      "Le grand tourisme rencontre la performance M. La M8 Competition allie luxe et puissance brute, délivrant 617 ch via un système AWD avancé pour des performances de supercar en toutes conditions.",
     topSpeed: "305 km/h",
   },
   {
@@ -308,7 +308,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: false,
     description:
-      "La nuova dolce vita. The Roma embodies timeless Italian elegance with a twin-turbo V8 heart, representing the modern front-engine V8 Ferrari GT.",
+      "La nuova dolce vita. La Roma incarne l'élégance italienne intemporelle avec un cœur V8 biturbo, représentant la Ferrari GT moderne à moteur V8 avant.",
     topSpeed: "320 km/h",
   },
   {
@@ -334,7 +334,7 @@ export const vehicles: Vehicle[] = [
     featured: false,
     newArrival: false,
     description:
-      "The everyday supercar. With its naturally-aspirated V10 derived from Lamborghini, the R8 Performance delivers race-car thrills with Audi's legendary all-wheel-drive confidence.",
+      "La supercar du quotidien. Avec son V10 atmosphérique dérivé de Lamborghini, la R8 Performance offre des sensations de course avec la confiance légendaire de la transmission intégrale Audi.",
     topSpeed: "330 km/h",
   },
 ];
@@ -360,18 +360,24 @@ export function getUniqueColors(): string[] {
 }
 
 export function getUniqueCategories(): string[] {
-  return [...new Set(vehicles.map((v) => v.category))].sort();
+  const categoryMap: Record<string, string> = {
+    supercar: "Supercar",
+    sports: "Sport",
+    electric: "Électrique",
+    luxury: "Luxe",
+  };
+  return [...new Set(vehicles.map((v) => categoryMap[v.category] || v.category))].sort();
 }
 
 export function formatPrice(price: number): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("fr-FR", {
     style: "currency",
-    currency: "USD",
+    currency: "EUR",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(price);
 }
 
 export function formatMileage(mileage: number): string {
-  return new Intl.NumberFormat("en-US").format(mileage) + " mi";
+  return new Intl.NumberFormat("fr-FR").format(mileage) + " km";
 }

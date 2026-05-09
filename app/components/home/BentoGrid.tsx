@@ -11,7 +11,7 @@ export default function BentoGrid() {
 
   return (
     <section className="relative py-16 sm:py-20 lg:py-28 bg-background overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-crimson/3 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand/3 blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -21,26 +21,31 @@ export default function BentoGrid() {
           <div className="flex items-end justify-between gap-4 mb-10 sm:mb-16">
             <div className="space-y-2 sm:space-y-4">
               <div className="flex items-center gap-3">
-                <span className="block w-8 h-px bg-crimson" />
-                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.5em] uppercase text-crimson">
-                  Fresh Inventory
+                <span className="block w-8 h-px bg-brand" />
+                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.5em] uppercase text-brand">
+                  Inventaire Récent
                 </span>
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white tracking-tighter leading-none uppercase italic">
-                New <span className="text-white/10 not-italic">Arrivals</span>
+                Nouveaux <span className="text-white/10 not-italic">Arrivages</span>
               </h2>
               <p className="text-xs sm:text-sm text-white/40 max-w-xs leading-relaxed font-medium hidden sm:block">
-                Handpicked machines for those who refuse to compromise.
+                Des machines sélectionnées avec soin pour ceux qui refusent les compromis.
               </p>
             </div>
             <Link
               href="/inventory?sort=newest"
-              className="shrink-0 group inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-white/10 rounded-xl sm:rounded-2xl text-[10px] sm:text-[11px] font-bold tracking-[0.15em] uppercase text-white/50 hover:text-white hover:border-crimson/40 transition-all duration-300"
+              className="shrink-0 group inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-white/10 rounded-xl sm:rounded-2xl text-[10px] sm:text-[11px] font-bold tracking-[0.15em] uppercase text-white/50 hover:text-white hover:border-brand/40 transition-all duration-300"
             >
-              <span className="hidden sm:inline">View All</span>
-              <span className="sm:hidden">All</span>
+              <span className="hidden sm:inline">Tout Voir</span>
+              <span className="sm:hidden">Tout</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </Link>
+
+            {/* Comic BOOM */}
+            <div className="absolute -top-10 -right-4 sm:-right-8 lg:-right-12 z-20 pointer-events-none animate-bounce-slow hidden sm:block">
+              <Image src="/images/comics/boom.png" alt="BOOM!" width={140} height={140} className="drop-shadow-[0_0_25px_rgba(255,69,0,0.5)] -rotate-6" />
+            </div>
           </div>
         </AnimatedSection>
 
@@ -59,12 +64,12 @@ export default function BentoGrid() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
                   {/* Badge */}
-                  <span className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-crimson text-white text-[8px] font-black uppercase tracking-widest">
-                    <Zap className="w-2 h-2" fill="currentColor" /> New
+                  <span className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-brand text-white text-[8px] font-black uppercase tracking-widest">
+                    <Zap className="w-2 h-2" fill="currentColor" /> Nouveau
                   </span>
                   {/* Info */}
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-[8px] font-bold text-crimson uppercase tracking-widest">{car.make} · {car.year}</p>
+                    <p className="text-[8px] font-bold text-brand uppercase tracking-widest">{car.make} · {car.year}</p>
                     <p className="text-sm font-black text-white uppercase tracking-tight leading-tight">{car.model}</p>
                     <p className="text-[10px] font-bold text-white/50 mt-0.5">{formatPrice(car.price)}</p>
                   </div>
@@ -134,7 +139,7 @@ function CarCard({ car, size }: { car: any; size: "hero" | "wide" | "small" }) {
   return (
     <Link
       href={`/inventory/${car.slug}`}
-      className="group relative flex w-full h-full rounded-[1.75rem] overflow-hidden bg-black border border-white/5 transition-all duration-700 hover:border-crimson/30 hover:shadow-[0_24px_80px_-16px_rgba(220,38,38,0.2)]"
+      className="group relative flex w-full h-full rounded-[1.75rem] overflow-hidden bg-black border border-white/5 transition-all duration-700 hover:border-brand/30 hover:shadow-[0_24px_80px_-16px_rgba(255,165,0,0.2)]"
     >
       <Image
         src={car.image} alt={car.name} fill
@@ -146,8 +151,8 @@ function CarCard({ car, size }: { car: any; size: "hero" | "wide" | "small" }) {
       {/* Top badge */}
       <div className="absolute top-4 left-4">
         {car.newArrival && (
-          <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-crimson text-white text-[9px] font-black uppercase tracking-widest">
-            <Zap className="w-2.5 h-2.5" fill="currentColor" /> New
+          <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-widest">
+            <Zap className="w-2.5 h-2.5" fill="currentColor" /> Nouveau
           </span>
         )}
       </div>
@@ -159,7 +164,7 @@ function CarCard({ car, size }: { car: any; size: "hero" | "wide" | "small" }) {
           {car.make} · {car.year}
         </p>
         <div className="flex items-end justify-between gap-3">
-          <h3 className={`font-black text-white uppercase tracking-tighter leading-[0.9] transition-colors duration-500 group-hover:text-crimson-bright ${
+          <h3 className={`font-black text-white uppercase tracking-tighter leading-[0.9] transition-colors duration-500 group-hover:text-brand-bright ${
             isHero ? "text-3xl lg:text-4xl xl:text-5xl" : "text-xl"
           }`}>
             {car.model}
@@ -171,10 +176,10 @@ function CarCard({ car, size }: { car: any; size: "hero" | "wide" | "small" }) {
 
         {/* Hover reveal */}
         <div className="flex items-center gap-4 mt-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-          <span className="text-[9px] font-bold text-white/25 uppercase tracking-widest">{car.horsepower} HP</span>
+          <span className="text-[9px] font-bold text-white/25 uppercase tracking-widest">{car.horsepower} CV</span>
           <span className="w-px h-3 bg-white/10" />
           <span className="text-[9px] font-bold text-white/25 uppercase tracking-widest">{car.zeroToSixty} 0–100</span>
-          <div className="ml-auto w-8 h-8 rounded-full bg-crimson flex items-center justify-center">
+          <div className="ml-auto w-8 h-8 rounded-full bg-brand flex items-center justify-center">
             <ArrowRight className="w-3.5 h-3.5 text-white" />
           </div>
         </div>

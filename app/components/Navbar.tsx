@@ -7,9 +7,9 @@ import { Search } from "lucide-react";
 import AdminPanel from "./AdminPanel";
 
 const navLinks = [
-  { href: "/inventory", label: "Models" },
-  { href: "/sell-my-car", label: "Trade-In" },
-  { href: "/finance", label: "Enquire" },
+  { href: "/inventory", label: "Modèles" },
+  { href: "/sell-my-car", label: "Reprise" },
+  { href: "/finance", label: "S'informer" },
 ];
 
 export default function Navbar() {
@@ -54,9 +54,9 @@ export default function Navbar() {
             <div className="flex items-center justify-center">
               <Link href="/" className="group flex flex-col items-center">
                 <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-[0.15em] text-white uppercase italic transition-all duration-300">
-                  NO<span className="text-crimson">LIMIT</span>
+                  NO<span className="text-brand">LIMIT</span>
                 </span>
-                <div className="w-12 h-[2px] bg-crimson mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="w-12 h-[2px] bg-brand mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Link>
             </div>
 
@@ -88,12 +88,12 @@ export default function Navbar() {
                     >
                       {link.label}
                       <span
-                        className={`absolute -bottom-1 left-0 h-[1px] bg-crimson transition-all duration-300 ${
+                        className={`absolute -bottom-1 left-0 h-[1px] bg-brand transition-all duration-300 ${
                           isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
                       />
                       {isActive && (
-                        <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-crimson" />
+                        <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
                       )}
                     </Link>
                   );

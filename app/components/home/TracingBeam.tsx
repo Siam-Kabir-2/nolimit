@@ -23,11 +23,11 @@ export default function TracingBeam({ children }: { children: React.ReactNode })
     <div ref={scrollRef} className="relative w-full">
       <div className="absolute left-4 md:left-10 lg:left-20 top-0 bottom-0 w-[1px] bg-white/5 hidden sm:block">
         <div 
-          className="absolute top-0 w-[2px] bg-gradient-to-b from-transparent via-crimson to-transparent transition-all duration-150 ease-out"
+          className="absolute top-0 w-[2px] bg-gradient-to-b from-transparent via-brand to-transparent transition-all duration-150 ease-out"
           style={{ 
             height: "150px", 
             top: `${beamHeight}%`,
-            boxShadow: "0 0 15px oklch(60% 0.25 20 / 0.5)"
+            boxShadow: "0 0 15px oklch(65% 0.22 55 / 0.5)"
           }}
         />
       </div>

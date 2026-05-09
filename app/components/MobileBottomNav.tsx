@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { Car, Home, PlusCircle, MessageSquare } from "lucide-react";
 
 const navItems = [
-  { label: "Home",    href: "/",           icon: Home },
-  { label: "Models",  href: "/inventory",  icon: Car },
-  { label: "Trade",   href: "/sell-my-car", icon: PlusCircle },
-  { label: "Enquire", href: "/finance",    icon: MessageSquare },
+  { label: "Accueil", href: "/",           icon: Home },
+  { label: "Modèles", href: "/inventory",  icon: Car },
+  { label: "Reprise", href: "/sell-my-car", icon: PlusCircle },
+  { label: "S'informer", href: "/finance",  icon: MessageSquare },
 ];
 
 export default function MobileBottomNav() {
@@ -33,17 +33,17 @@ export default function MobileBottomNav() {
             >
               {/* Active indicator dot above icon */}
               {isActive && (
-                <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-crimson" />
+                <span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
               )}
               <Icon
                 className={`w-5 h-5 transition-all duration-300 ${
-                  isActive ? "text-crimson scale-110" : "text-white/30"
+                  isActive ? "text-brand scale-110" : "text-white/30"
                 }`}
                 strokeWidth={isActive ? 2.5 : 1.8}
               />
               <span
                 className={`text-[9px] font-black uppercase tracking-widest transition-all duration-300 ${
-                  isActive ? "text-crimson opacity-100" : "text-white/25 opacity-100"
+                  isActive ? "text-brand opacity-100" : "text-white/25 opacity-100"
                 }`}
               >
                 {item.label}

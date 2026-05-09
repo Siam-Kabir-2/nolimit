@@ -31,62 +31,62 @@ function getResponse(input: string, router: ReturnType<typeof useRouter>): Messa
   const id = Math.random().toString(36).slice(2);
 
   // Navigation intents
-  if (/(go to|take me|open|navigate).*(model|inventory|collection)/.test(q) || q === "models") {
+  if (/(aller à|amène-moi|ouvrir|naviguer).*(modèle|inventaire|collection)/.test(q) || q === "modèles") {
     router.push("/inventory");
-    return { id, role: "apex", text: "Taking you to the Models collection now. 🚀", links: [] };
+    return { id, role: "apex", text: "Je vous emmène à la collection de Modèles. 🚀", links: [] };
   }
-  if (/(go to|take me|open|navigate).*(trade|sell)/.test(q) || /trade.?in/.test(q) && /how|where|page/.test(q)) {
+  if (/(aller à|amène-moi|ouvrir|naviguer).*(reprise|vendre)/.test(q) || /reprise/.test(q) && /comment|où|page/.test(q)) {
     router.push("/sell-my-car");
-    return { id, role: "apex", text: "Navigating to our Trade-In page.", links: [] };
+    return { id, role: "apex", text: "Navigation vers notre page de Reprise.", links: [] };
   }
-  if (/(go to|take me|open|navigate).*(contact|enquire|finance)/.test(q) || /contact/.test(q) && /page|us/.test(q)) {
+  if (/(aller à|amène-moi|ouvrir|naviguer).*(contact|s'informer|financement)/.test(q) || /contact/.test(q) && /page|nous/.test(q)) {
     router.push("/finance");
-    return { id, role: "apex", text: "Opening the Enquire page for you.", links: [] };
+    return { id, role: "apex", text: "Ouverture de la page d'Information pour vous.", links: [] };
   }
 
   // Greetings
-  if (/^(hi|hello|hey|sup|yo|what's up|howdy)/.test(q)) {
+  if (/^(salut|bonjour|hey|yo|coucou|bonsoir)/.test(q)) {
     return {
       id, role: "apex",
-      text: "Hey! I'm APEX, your personal NoLimit advisor. Ask me about any car in our collection, trade-ins, pricing, or where to go on the site.",
+      text: "Salut ! Je suis APEX, votre conseiller personnel NoLimit. Interrogez-moi sur n'importe quelle voiture de notre collection, les reprises, les tarifs ou la navigation sur le site.",
       links: [
-        { label: "Browse Models", href: "/inventory" },
-        { label: "Enquire Now", href: "/finance" },
+        { label: "Parcourir les Modèles", href: "/inventory" },
+        { label: "S'informer", href: "/finance" },
       ],
     };
   }
 
   // Fastest car
-  if (/fastest|quickest|most powerful|0.?to.?60|0.?to.?100/.test(q)) {
+  if (/rapide|puissante|plus rapide|0.?à.?100|0.?a.?100/.test(q)) {
     const sorted = [...vehicles].sort((a, b) => parseFloat(a.zeroToSixty) - parseFloat(b.zeroToSixty));
     const fastest = sorted[0];
     return {
       id, role: "apex",
-      text: `Our quickest car is the **${fastest.name}** — it hits 0-100 km/h in just **${fastest.zeroToSixty}** with **${fastest.horsepower} HP**. A proper weapon.`,
+      text: `Notre voiture la plus rapide est la **${fastest.name}** — elle atteint 0-100 km/h en seulement **${fastest.zeroToSixty}** avec **${fastest.horsepower} CV**. Une véritable arme.`,
       cars: [fastest],
-      links: [{ label: `View ${fastest.model}`, href: `/inventory/${fastest.slug}` }],
+      links: [{ label: `Voir la ${fastest.model}`, href: `/inventory/${fastest.slug}` }],
     };
   }
 
   // Most expensive / cheapest
-  if (/most expensive|priciest|highest price/.test(q)) {
+  if (/plus cher|plus couteux|prix le plus haut/.test(q)) {
     const sorted = [...vehicles].sort((a, b) => b.price - a.price);
     const top = sorted[0];
     return {
       id, role: "apex",
-      text: `Our crown jewel is the **${top.name}** at **${formatPrice(top.price)}**. Absolutely uncompromising.`,
+      text: `Notre joyau de la couronne est la **${top.name}** à **${formatPrice(top.price)}**. Absolument sans compromis.`,
       cars: [top],
-      links: [{ label: `View ${top.model}`, href: `/inventory/${top.slug}` }],
+      links: [{ label: `Voir la ${top.model}`, href: `/inventory/${top.slug}` }],
     };
   }
-  if (/cheapest|affordable|lowest price|entry/.test(q)) {
+  if (/moins cher|abordable|prix le plus bas|entrée de gamme/.test(q)) {
     const sorted = [...vehicles].sort((a, b) => a.price - b.price);
     const low = sorted[0];
     return {
       id, role: "apex",
-      text: `Our most accessible vehicle is the **${low.name}** starting at **${formatPrice(low.price)}**. Still an absolutely pure machine.`,
+      text: `Notre véhicule le plus accessible est la **${low.name}** à partir de **${formatPrice(low.price)}**. Toujours une machine absolument pure.`,
       cars: [low],
-      links: [{ label: `View ${low.model}`, href: `/inventory/${low.slug}` }],
+      links: [{ label: `Voir la ${low.model}`, href: `/inventory/${low.slug}` }],
     };
   }
 
@@ -98,9 +98,9 @@ function getResponse(input: string, router: ReturnType<typeof useRouter>): Messa
       if (found.length) {
         return {
           id, role: "apex",
-          text: `We have **${found.length}** ${make.charAt(0).toUpperCase() + make.slice(1)} model${found.length > 1 ? "s" : ""} in stock:`,
+          text: `Nous avons **${found.length}** modèle${found.length > 1 ? "s" : ""} ${make.charAt(0).toUpperCase() + make.slice(1)} en stock :`,
           cars: found,
-          links: [{ label: `All ${make.charAt(0).toUpperCase() + make.slice(1)} Models`, href: `/inventory?make=${make.charAt(0).toUpperCase() + make.slice(1)}` }],
+          links: [{ label: `Tous les modèles ${make.charAt(0).toUpperCase() + make.slice(1)}`, href: `/inventory?make=${make.charAt(0).toUpperCase() + make.slice(1)}` }],
         };
       }
     }
@@ -109,82 +109,82 @@ function getResponse(input: string, router: ReturnType<typeof useRouter>): Messa
   // Search by category
   if (/supercar|super car/.test(q)) {
     const found = vehicles.filter((v) => v.category === "supercar");
-    return { id, role: "apex", text: `We carry **${found.length} supercars**. Here's a look:`, cars: found.slice(0, 3), links: [{ label: "View All Supercars", href: "/inventory?category=supercar" }] };
+    return { id, role: "apex", text: `Nous avons **${found.length} supercars**. En voici un aperçu :`, cars: found.slice(0, 3), links: [{ label: "Voir toutes les Supercars", href: "/inventory" }] };
   }
-  if (/electric|ev|electr/.test(q)) {
+  if (/electrique|ev|electr/.test(q)) {
     const found = vehicles.filter((v) => v.category === "electric");
-    return { id, role: "apex", text: `We have **${found.length} electric vehicles** — silent but devastating:`, cars: found, links: [{ label: "View EVs", href: "/inventory?category=electric" }] };
+    return { id, role: "apex", text: `Nous avons **${found.length} véhicules électriques** — silencieux mais dévastateurs :`, cars: found, links: [{ label: "Voir les EVs", href: "/inventory" }] };
   }
-  if (/luxury/.test(q)) {
+  if (/luxe|luxury/.test(q)) {
     const found = vehicles.filter((v) => v.category === "luxury");
-    return { id, role: "apex", text: `Our **luxury** selection — refined power with unmatched presence:`, cars: found, links: [{ label: "View Luxury", href: "/inventory?category=luxury" }] };
+    return { id, role: "apex", text: `Notre sélection **luxe** — puissance raffinée avec une présence inégalée :`, cars: found, links: [{ label: "Voir Luxe", href: "/inventory" }] };
   }
-  if (/sports/.test(q)) {
+  if (/sport|sports/.test(q)) {
     const found = vehicles.filter((v) => v.category === "sports");
-    return { id, role: "apex", text: `Our **sports** lineup — track precision with road manners:`, cars: found, links: [{ label: "View Sports", href: "/inventory?category=sports" }] };
+    return { id, role: "apex", text: `Notre gamme **sport** — précision de piste avec manières routières :`, cars: found, links: [{ label: "Voir Sport", href: "/inventory" }] };
   }
 
   // Trade-in
-  if (/trade.?in|sell.*car|my car|get offer|valuation/.test(q)) {
+  if (/reprise|vendre.*voiture|ma voiture|estimation|evaluation/.test(q)) {
     return {
       id, role: "apex",
-      text: "Thinking of trading in? We offer instant, fair-market valuations with zero pressure. Just enter your VIN and we handle the rest.",
-      links: [{ label: "Start Trade-In", href: "/sell-my-car" }],
+      text: "Vous envisagez une reprise ? Nous offrons des évaluations instantanées au prix du marché, sans aucune pression. Entrez simplement votre NIV et nous nous occupons du reste.",
+      links: [{ label: "Démarrer une Reprise", href: "/sell-my-car" }],
     };
   }
 
   // Finance / payment
-  if (/financ|loan|payment|monthly|credit|down payment/.test(q)) {
+  if (/financ|pret|paiement|mensuel|credit|acompte/.test(q)) {
     return {
       id, role: "apex",
-      text: "We offer competitive financing with $0 down payment available. Our specialists will find the right structure for your situation.",
-      links: [{ label: "Enquire About Finance", href: "/finance?type=finance" }],
+      text: "Nous proposons des financements compétitifs avec acompte de 0 € possible. Nos spécialistes trouveront la structure adaptée à votre situation.",
+      links: [{ label: "S'informer sur le Financement", href: "/finance" }],
     };
   }
 
   // Contact / location
-  if (/contact|location|address|call|email|phone|showroom|visit/.test(q)) {
+  if (/contact|lieu|adresse|appeler|email|telephone|showroom|visite/.test(q)) {
     return {
       id, role: "apex",
-      text: "📍 **1200 Velocity Drive, Beverly Hills, CA 90210**\n📞 +1 (800) NO-LIMIT\n📧 hello@nolimitautos.com\n\n⏰ Mon–Sat: 9am–7pm | Sun: By Appointment",
-      links: [{ label: "Full Contact Page", href: "/finance" }],
+      text: "📍 **1200 Velocity Drive, Beverly Hills, CA 90210**\n📞 +1 (800) NO-LIMIT\n📧 hello@nolimitautos.com\n\n⏰ Lun–Sam : 9h–19h | Dim : Sur rendez-vous",
+      links: [{ label: "Page de Contact", href: "/finance" }],
     };
   }
 
   // Test drive
-  if (/test drive|drive it|try it|appointment/.test(q)) {
+  if (/essai|conduire|essayer|rendez-vous/.test(q)) {
     return {
       id, role: "apex",
-      text: "Absolutely — we encourage every client to experience the machine before committing. Book a test drive and our team will arrange everything.",
-      links: [{ label: "Book a Test Drive", href: "/finance" }],
+      text: "Absolument — nous encourageons chaque client à faire l'expérience de la machine avant de s'engager. Réservez un essai routier et notre équipe organisera tout.",
+      links: [{ label: "Réserver un Essai", href: "/finance" }],
     };
   }
 
   // How many cars / inventory
-  if (/how many|all cars|full list|all vehicle|inventory|collection/.test(q)) {
+  if (/combien|toutes les voitures|liste complète|tout vehicule|inventaire|collection/.test(q)) {
     return {
       id, role: "apex",
-      text: `We currently have **${vehicles.length} vehicles** across ${[...new Set(vehicles.map(v => v.category))].length} categories. Every one is handpicked.`,
-      links: [{ label: "Browse Full Collection", href: "/inventory" }],
+      text: `Nous avons actuellement **${vehicles.length} véhicules** dans ${[...new Set(vehicles.map(v => v.category))].length} catégories. Chaque exemplaire est rigoureusement sélectionné.`,
+      links: [{ label: "Parcourir la Collection", href: "/inventory" }],
     };
   }
 
   // New arrivals
-  if (/new|arrival|latest|recent|fresh/.test(q)) {
+  if (/nouveau|arrivage|dernier|recent|frais/.test(q)) {
     const newOnes = vehicles.filter((v) => v.newArrival);
     return {
       id, role: "apex",
-      text: `**${newOnes.length} new arrivals** just landed in the collection:`,
+      text: `**${newOnes.length} nouveaux arrivages** viennent d'intégrer la collection :`,
       cars: newOnes.slice(0, 3),
-      links: [{ label: "All New Arrivals", href: "/inventory?sort=newest" }],
+      links: [{ label: "Toutes les Nouveautés", href: "/inventory" }],
     };
   }
 
   // About APEX
-  if (/who are you|what are you|apex|your name/.test(q)) {
+  if (/qui es-tu|c'est quoi|apex|ton nom/.test(q)) {
     return {
       id, role: "apex",
-      text: "I'm **APEX** — NoLimit's AI concierge. I know every car in this collection by heart. Ask me specs, pricing, comparisons, or I can take you anywhere on the site.",
+      text: "Je suis **APEX** — le concierge IA de NoLimit. Je connais chaque voiture de cette collection par cœur. Demandez-moi les specs, les tarifs, des comparaisons, ou je peux vous guider n'importe où sur le site.",
     };
   }
 
@@ -198,17 +198,17 @@ function getResponse(input: string, router: ReturnType<typeof useRouter>): Messa
 
   return {
     id, role: "apex",
-    text: "I didn't quite catch that. I can help you with:\n• Car specs & pricing\n• Finding vehicles by make or category\n• Trade-in & finance info\n• Navigating the site",
+    text: "Je n'ai pas bien saisi. Je peux vous aider avec :\n• Spécifications et tarifs des voitures\n• Recherche de véhicules par marque ou catégorie\n• Infos sur les reprises et le financement\n• Navigation sur le site",
     links: suggestions.map((s) => ({ label: s.label, href: "#", query: s.q } as { label: string; href: string; query?: string })),
   };
 }
 
 const SUGGESTIONS = [
-  "Fastest car in stock",
-  "Show Lamborghinis",
-  "Electric vehicles",
-  "Trade-in my car",
-  "Contact info",
+  "Voiture la plus rapide",
+  "Montrer les Lamborghinis",
+  "Véhicules électriques",
+  "Reprendre ma voiture",
+  "Infos de contact",
 ];
 
 export default function ApexAI() {
@@ -220,11 +220,11 @@ export default function ApexAI() {
     {
       id: "welcome",
       role: "apex",
-      text: "I'm **APEX**, your NoLimit AI advisor. Ask me about any vehicle, pricing, trade-ins, or let me navigate you around the site.",
+      text: "Je suis **APEX**, votre conseiller IA NoLimit. Interrogez-moi sur n'importe quel véhicule, tarifs, reprises, ou laissez-moi vous guider sur le site.",
       links: [
-        { label: "Browse Models", href: "/inventory" },
-        { label: "Get a Trade-In Quote", href: "/sell-my-car" },
-        { label: "Enquire Now", href: "/finance" },
+        { label: "Parcourir les Modèles", href: "/inventory" },
+        { label: "Obtenir un Devis de Reprise", href: "/sell-my-car" },
+        { label: "S'informer Maintenant", href: "/finance" },
       ],
     },
   ]);
@@ -276,8 +276,8 @@ export default function ApexAI() {
       {/* Floating button */}
       <button
         onClick={() => setOpen(true)}
-        className={`fixed bottom-24 sm:bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-full bg-crimson text-white shadow-[0_0_30px_oklch(60%_0.25_20/0.5)] hover:bg-crimson-bright transition-all duration-300 hover:scale-105 active:scale-95 ${open ? "opacity-0 pointer-events-none" : "opacity-100"}`}
-        aria-label="Open APEX AI"
+        className={`fixed bottom-24 sm:bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-full bg-brand text-white shadow-[0_0_30px_oklch(65%_0.22_55/0.5)] hover:bg-brand-bright transition-all duration-300 hover:scale-105 active:scale-95 ${open ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        aria-label="Ouvrir APEX IA"
       >
         <Zap className="w-4 h-4" fill="currentColor" />
         <span className="text-[11px] font-black uppercase tracking-widest">APEX</span>
@@ -293,13 +293,13 @@ export default function ApexAI() {
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/8">
           <div className="flex items-center gap-3">
-            <div className="relative w-8 h-8 rounded-xl bg-crimson/15 border border-crimson/25 flex items-center justify-center">
-              <Zap className="w-4 h-4 text-crimson" fill="currentColor" />
+            <div className="relative w-8 h-8 rounded-xl bg-brand/15 border border-brand/25 flex items-center justify-center">
+              <Zap className="w-4 h-4 text-brand" fill="currentColor" />
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 border border-black" />
             </div>
             <div>
               <p className="text-[12px] font-black text-white tracking-wider">APEX</p>
-              <p className="text-[9px] text-emerald-400 tracking-wider">Online · NoLimit AI</p>
+              <p className="text-[9px] text-emerald-400 tracking-wider">En ligne · IA NoLimit</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -308,7 +308,7 @@ export default function ApexAI() {
                 setMessages([{
                   id: "welcome",
                   role: "apex",
-                  text: "Conversation reset. How can I help you today?",
+                  text: "Conversation réinitialisée. Comment puis-je vous aider aujourd'hui ?",
                 }]);
               }}
               className="w-7 h-7 flex items-center justify-center rounded-lg text-white/25 hover:text-white/60 hover:bg-white/5 transition-all"
@@ -346,16 +346,16 @@ export default function ApexAI() {
                           key={car.slug}
                           href={`/inventory/${car.slug}`}
                           onClick={() => setOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/4 border border-white/6 hover:border-crimson/30 hover:bg-white/6 transition-all group"
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/4 border border-white/6 hover:border-brand/30 hover:bg-white/6 transition-all group"
                         >
                           <div className="flex flex-col flex-1 min-w-0">
-                            <p className="text-[10px] font-semibold text-crimson uppercase tracking-wider truncate">{car.make}</p>
+                            <p className="text-[10px] font-semibold text-brand uppercase tracking-wider truncate">{car.make}</p>
                             <p className="text-[11px] font-bold text-white truncate">{car.model}</p>
                           </div>
                           <div className="flex flex-col items-end gap-0.5 shrink-0">
                             <div className="flex items-center gap-1 text-[9px] text-white/30">
                               <Gauge className="w-2.5 h-2.5" />
-                              <span>{car.horsepower} HP</span>
+                              <span>{car.horsepower} CV</span>
                             </div>
                             <div className="flex items-center gap-1 text-[9px] text-white/30">
                               <Clock className="w-2.5 h-2.5" />
@@ -366,7 +366,7 @@ export default function ApexAI() {
                               <span>{formatPrice(car.price)}</span>
                             </div>
                           </div>
-                          <ChevronRight className="w-3 h-3 text-white/20 group-hover:text-crimson transition-colors shrink-0" />
+                          <ChevronRight className="w-3 h-3 text-white/20 group-hover:text-brand transition-colors shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -380,7 +380,7 @@ export default function ApexAI() {
                           <button
                             key={link.label}
                             onClick={() => send(link.query as string)}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-crimson/40 hover:bg-crimson/8 transition-all text-[10px] font-semibold text-white/50 hover:text-crimson"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-brand/40 hover:bg-brand/8 transition-all text-[10px] font-semibold text-white/50 hover:text-brand"
                           >
                             {link.label}
                           </button>
@@ -389,7 +389,7 @@ export default function ApexAI() {
                             key={link.label}
                             href={link.href}
                             onClick={() => setOpen(false)}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-crimson/40 hover:bg-crimson/8 transition-all text-[10px] font-semibold text-white/50 hover:text-crimson"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-brand/40 hover:bg-brand/8 transition-all text-[10px] font-semibold text-white/50 hover:text-brand"
                           >
                             {link.label}
                             <ChevronRight className="w-2.5 h-2.5" />
@@ -400,7 +400,7 @@ export default function ApexAI() {
                   )}
                 </div>
               ) : (
-                <div className="max-w-[75%] px-4 py-2.5 rounded-2xl rounded-tr-sm bg-crimson/20 border border-crimson/25">
+                <div className="max-w-[75%] px-4 py-2.5 rounded-2xl rounded-tr-sm bg-brand/20 border border-brand/25">
                   <p className="text-[12px] text-white/80 leading-relaxed">{msg.text}</p>
                 </div>
               )}
@@ -428,7 +428,7 @@ export default function ApexAI() {
               <button
                 key={s}
                 onClick={() => send(s)}
-                className="shrink-0 px-3 py-1.5 rounded-full bg-white/4 border border-white/8 hover:border-crimson/30 transition-all text-[10px] font-medium text-white/40 hover:text-white whitespace-nowrap"
+                className="shrink-0 px-3 py-1.5 rounded-full bg-white/4 border border-white/8 hover:border-brand/30 transition-all text-[10px] font-medium text-white/40 hover:text-white whitespace-nowrap"
               >
                 {s}
               </button>
@@ -443,13 +443,13 @@ export default function ApexAI() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask APEX anything..."
-            className="flex-1 bg-white/4 border border-white/8 rounded-xl px-4 py-2.5 text-[12px] text-white placeholder:text-white/20 focus:outline-none focus:border-crimson/40 transition-all"
+            placeholder="Demandez n'importe quoi à APEX..."
+            className="flex-1 bg-white/4 border border-white/8 rounded-xl px-4 py-2.5 text-[12px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand/40 transition-all"
           />
           <button
             type="submit"
             disabled={!input.trim()}
-            className="w-9 h-9 flex items-center justify-center rounded-xl bg-crimson hover:bg-crimson-bright transition-all disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+            className="w-9 h-9 flex items-center justify-center rounded-xl bg-brand hover:bg-brand-bright transition-all disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
           >
             <Send className="w-3.5 h-3.5 text-white" />
           </button>

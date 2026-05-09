@@ -98,6 +98,14 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/10 to-transparent z-10 hidden lg:block" />
         {/* Mobile-specific stronger bottom fade */}
         <div className="absolute inset-0 lg:hidden bg-linear-to-t from-black via-black/60 to-transparent z-10" />
+
+        {/* ── Comic Accents ── */}
+        <div className="absolute top-24 right-[10%] z-20 pointer-events-none animate-bounce-slow">
+          <Image src="/images/comics/bang.png" alt="BANG!" width={120} height={120} className="drop-shadow-[0_0_20px_rgba(255,165,0,0.4)] rotate-12" />
+        </div>
+        <div className="absolute bottom-40 left-[5%] z-20 pointer-events-none animate-float hidden lg:block">
+          <Image src="/images/comics/pow.png" alt="POW!" width={100} height={100} className="drop-shadow-[0_0_15px_rgba(255,255,0,0.3)] -rotate-12" />
+        </div>
       </div>
 
       {/* ══════════════════════════════════════════
@@ -107,8 +115,8 @@ export default function HeroSection() {
       <div className="lg:hidden absolute inset-0 z-20 flex flex-col justify-end pb-36 px-5">
         {/* Brand pill */}
         <div className="featured-item mb-4 flex items-center gap-2">
-          <span className="block w-[3px] h-3.5 bg-crimson rounded-full" />
-          <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-crimson">Featured Selection</p>
+          <span className="block w-[3px] h-3.5 bg-brand rounded-full" />
+          <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-brand">Sélection Vedette</p>
         </div>
 
         {/* Make / Model */}
@@ -129,15 +137,15 @@ export default function HeroSection() {
         {/* Specs — horizontal row */}
         <div className="featured-item flex items-center gap-3 mb-5">
           {[
-            { Icon: Cpu,   val: featuredCar.engine.match(/V\d+|Electric|Flat-\d+/)?.[0] ?? "V12", label: "Engine" },
-            { Icon: Gauge, val: `${featuredCar.horsepower}`, label: "HP" },
+            { Icon: Cpu,   val: featuredCar.engine.match(/V\d+|Electric|Flat-\d+/)?.[0] ?? "V12", label: "Moteur" },
+            { Icon: Gauge, val: `${featuredCar.horsepower}`, label: "CV" },
             { Icon: Timer, val: featuredCar.zeroToSixty, label: "0–100" },
           ].map(({ Icon, val, label }) => (
             <div key={label}
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-white/10 bg-white/5"
               style={{ backdropFilter: "blur(12px)" }}
             >
-              <Icon className="w-3 h-3 text-crimson" strokeWidth={1.5} />
+              <Icon className="w-3 h-3 text-brand" strokeWidth={1.5} />
               <div>
                 <p className="text-[12px] font-black text-white leading-none">{val}</p>
                 <p className="text-[8px] text-white/30 uppercase tracking-wider mt-0.5">{label}</p>
@@ -152,11 +160,11 @@ export default function HeroSection() {
             onClick={(e) => openModal(featuredCar, e)}
             className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-white text-black rounded-full font-bold text-[12px] tracking-[0.15em] uppercase active:scale-95 transition-all"
           >
-            Discover
+            Découvrir
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <div className="text-right">
-            <p className="text-[8px] text-white/25 uppercase tracking-wider">From</p>
+            <p className="text-[8px] text-white/25 uppercase tracking-wider">À partir de</p>
             <p className="text-[16px] font-black text-white">{formatPrice(featuredCar.price)}</p>
           </div>
         </div>
@@ -169,7 +177,7 @@ export default function HeroSection() {
                 key={i}
                 onClick={() => setActiveIndex(i)}
                 className={`h-0.5 rounded-full transition-all duration-500 ${
-                  i === activeIndex ? "w-6 bg-crimson" : "w-2 bg-white/20"
+                  i === activeIndex ? "w-6 bg-brand" : "w-2 bg-white/20"
                 }`}
               />
             ))}
@@ -186,8 +194,8 @@ export default function HeroSection() {
         <div className="flex flex-col gap-5 max-w-[520px]">
           {/* Label */}
           <div className="featured-item flex items-center gap-2">
-            <span className="block w-[3px] h-4 bg-crimson rounded-full" />
-            <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-crimson">Featured Selection</p>
+            <span className="block w-[3px] h-4 bg-brand rounded-full" />
+            <p className="text-[10px] font-semibold tracking-[0.35em] uppercase text-brand">Sélection Vedette</p>
           </div>
 
           {/* Headline */}
@@ -202,7 +210,7 @@ export default function HeroSection() {
 
           {/* Tagline */}
           <p className="featured-item text-[11px] font-semibold tracking-[0.22em] uppercase text-white/55">
-            A Legend Redefined.&nbsp;&nbsp;Power Without Limits.
+            Une Légende Redéfinie.&nbsp;&nbsp;Puissance Sans Limite.
           </p>
 
           {/* Description */}
@@ -216,7 +224,7 @@ export default function HeroSection() {
               onClick={(e) => openModal(featuredCar, e)}
               className="group inline-flex items-center gap-3 py-3 px-7 bg-white text-black rounded-full font-semibold text-[13px] tracking-[0.2em] uppercase transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-95"
             >
-              Discover Features
+              Découvrir les Caractéristiques
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
             </button>
           </div>
@@ -227,8 +235,8 @@ export default function HeroSection() {
               style={{ background: 'oklch(10% 0.005 250 / 0.75)', backdropFilter: 'blur(24px)', border: '1px solid oklch(30% 0.005 250 / 0.35)' }}
             >
               {[
-                { Icon: Cpu,   val: featuredCar.engine.match(/V\d+|Electric|Flat-\d+/)?.[0] ?? "V12", label: "Engine" },
-                { Icon: Gauge, val: `${featuredCar.horsepower}`, label: "HP" },
+                { Icon: Cpu,   val: featuredCar.engine.match(/V\d+|Electric|Flat-\d+/)?.[0] ?? "V12", label: "Moteur" },
+                { Icon: Gauge, val: `${featuredCar.horsepower}`, label: "CV" },
                 { Icon: Timer, val: featuredCar.zeroToSixty, label: "0–100 KM/H" },
               ].map(({ Icon, val, label }) => (
                 <div key={label} className="flex flex-col items-center justify-center gap-2 px-7 py-4 w-[110px]">
@@ -246,7 +254,7 @@ export default function HeroSection() {
           <div className="featured-item w-full max-w-[340px] h-0.5 bg-white/10 rounded-full overflow-hidden">
             <div
               key={activeIndex}
-              className="h-full bg-crimson origin-left animate-[hero-progress_8s_linear_forwards]"
+              className="h-full bg-brand origin-left animate-[hero-progress_8s_linear_forwards]"
             />
           </div>
         </div>
@@ -269,7 +277,7 @@ export default function HeroSection() {
                 onClick={(e) => openModal(car, e)}
                 onMouseEnter={() => setHoveredCar(`${car.slug}-${i}`)}
                 onMouseLeave={() => setHoveredCar(null)}
-                className="group relative w-36 h-24 rounded-xl overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-500 hover:border-crimson/40 hover:-translate-y-1 shrink-0 cursor-pointer"
+                className="group relative w-36 h-24 rounded-xl overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-500 hover:border-brand/40 hover:-translate-y-1 shrink-0 cursor-pointer"
               >
                 <Image src={car.image} alt={car.name} fill
                   className={`object-cover transition-transform duration-700 ${hoveredCar === `${car.slug}-${i}` ? "scale-110" : "scale-100"}`}
@@ -278,7 +286,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-400 ${hoveredCar === `${car.slug}-${i}` ? "opacity-100" : "opacity-0"}`} />
                 <div className={`absolute bottom-0 left-0 right-0 p-3 transition-all duration-400 ${hoveredCar === `${car.slug}-${i}` ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
-                  <p className="text-[9px] font-semibold text-crimson uppercase tracking-widest leading-none">{car.make}</p>
+                  <p className="text-[9px] font-semibold text-brand uppercase tracking-widest leading-none">{car.make}</p>
                   <p className="text-[11px] font-bold text-white leading-tight mt-0.5">{car.model}</p>
                 </div>
               </div>

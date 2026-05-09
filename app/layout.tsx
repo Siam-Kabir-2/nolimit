@@ -18,16 +18,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NoLimit Autos | Premium & Exotic Vehicles",
+  title: "NoLimit Autos | Véhicules de Prestige et d'Exception",
   description:
-    "Discover an unmatched collection of premium, luxury, and exotic vehicles. From supercars to electric performance machines — your dream car awaits at NoLimit Autos.",
+    "Découvrez une collection inégalée de véhicules premium, de luxe et exotiques. Des supercars aux machines électriques de performance — la voiture de vos rêves vous attend chez NoLimit Autos.",
   keywords: [
-    "luxury cars",
-    "exotic cars",
+    "voitures de luxe",
+    "voitures exotiques",
     "supercars",
-    "premium vehicles",
-    "car dealership",
-    "buy supercar",
+    "véhicules premium",
+    "concessionnaire automobile",
+    "acheter une supercar",
   ],
 };
 
@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} dark`}
       suppressHydrationWarning
     >

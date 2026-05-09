@@ -26,9 +26,9 @@ import {
 
 const categoryLabels: Record<string, string> = {
   supercar: "Supercar",
-  sports: "Sports",
-  luxury: "Luxury",
-  electric: "Electric",
+  sports: "Sport",
+  luxury: "Luxe",
+  electric: "Électrique",
 };
 
 function FilterSidebar({
@@ -56,18 +56,18 @@ function FilterSidebar({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-sm font-black text-white uppercase tracking-widest">Filters</h3>
+          <h3 className="text-sm font-black text-white uppercase tracking-widest">Filtres</h3>
           {hasActiveFilters && (
-            <p className="text-[10px] text-crimson mt-0.5">Active filters applied</p>
+            <p className="text-[10px] text-brand mt-0.5">Filtres actifs appliqués</p>
           )}
         </div>
         <div className="flex items-center gap-2">
           {hasActiveFilters && (
             <button
               onClick={() => setFilters({ make: "", category: "", minPrice: "", maxPrice: "", search: "", sort: "newest" })}
-              className="text-[10px] font-medium text-white/30 hover:text-crimson transition-colors uppercase tracking-wider"
+              className="text-[10px] font-medium text-white/30 hover:text-brand transition-colors uppercase tracking-wider"
             >
-              Clear all
+              Tout effacer
             </button>
           )}
           {onClose && (
@@ -80,29 +80,29 @@ function FilterSidebar({
 
       {/* Search */}
       <div>
-        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Search</label>
+        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Recherche</label>
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/25" />
           <input
             type="text"
-            placeholder="Make, model, year..."
+            placeholder="Marque, modèle, année..."
             value={filters.search}
             onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-            className="w-full pl-9 pr-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-crimson/40 transition-colors"
+            className="w-full pl-9 pr-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-brand/40 transition-colors"
           />
         </div>
       </div>
 
       {/* Make */}
       <div>
-        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Make</label>
+        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Marque</label>
         <div className="relative">
           <select
             value={filters.make}
             onChange={(e) => setFilters({ ...filters, make: e.target.value })}
-            className="w-full px-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm focus:outline-none focus:border-crimson/40 appearance-none cursor-pointer transition-colors"
+            className="w-full px-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm focus:outline-none focus:border-brand/40 appearance-none cursor-pointer transition-colors"
           >
-            <option value="">All Makes</option>
+            <option value="">Toutes les Marques</option>
             {makes.map((m) => (
               <option key={m} value={m}>{m}</option>
             ))}
@@ -113,7 +113,7 @@ function FilterSidebar({
 
       {/* Category */}
       <div>
-        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Category</label>
+        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Catégorie</label>
         <div className="flex flex-wrap gap-2">
           {["", ...categories].map((cat) => (
             <button
@@ -121,11 +121,11 @@ function FilterSidebar({
               onClick={() => setFilters({ ...filters, category: cat })}
               className={`px-3.5 py-1.5 rounded-lg text-[11px] font-semibold tracking-wide transition-all duration-200 ${
                 filters.category === cat
-                  ? "bg-crimson text-white"
+                  ? "bg-brand text-white"
                   : "bg-white/4 border border-white/8 text-white/40 hover:text-white hover:border-white/20"
               }`}
             >
-              {cat ? (categoryLabels[cat] || cat) : "All"}
+              {cat ? (categoryLabels[cat] || cat) : "Toutes"}
             </button>
           ))}
         </div>
@@ -133,39 +133,39 @@ function FilterSidebar({
 
       {/* Price Range */}
       <div>
-        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Price Range</label>
+        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Gamme de Prix</label>
         <div className="grid grid-cols-2 gap-2.5">
           <input
             type="number"
-            placeholder="Min $"
+            placeholder="Min €"
             value={filters.minPrice}
             onChange={(e) => setFilters({ ...filters, minPrice: e.target.value })}
-            className="px-3 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-crimson/40 transition-colors"
+            className="px-3 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-brand/40 transition-colors"
           />
           <input
             type="number"
-            placeholder="Max $"
+            placeholder="Max €"
             value={filters.maxPrice}
             onChange={(e) => setFilters({ ...filters, maxPrice: e.target.value })}
-            className="px-3 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-crimson/40 transition-colors"
+            className="px-3 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-brand/40 transition-colors"
           />
         </div>
       </div>
 
       {/* Sort By (Mobile Only Sidebar view) */}
       <div className="lg:hidden">
-        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Sort By</label>
+        <label className="block text-[10px] font-semibold text-white/30 uppercase tracking-[0.2em] mb-2.5">Trier Par</label>
         <div className="relative">
           <select
             value={filters.sort}
             onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
-            className="w-full px-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm focus:outline-none focus:border-crimson/40 appearance-none cursor-pointer transition-colors"
+            className="w-full px-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm focus:outline-none focus:border-brand/40 appearance-none cursor-pointer transition-colors"
           >
-            <option value="newest">Newest Arrivals</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="hp-desc">Horsepower: High First</option>
-            <option value="year-desc">Year: Newest First</option>
+            <option value="newest">Nouveautés</option>
+            <option value="price-asc">Prix : Croissant</option>
+            <option value="price-desc">Prix : Décroissant</option>
+            <option value="hp-desc">Puissance : Décroissante</option>
+            <option value="year-desc">Année : La plus récente</option>
           </select>
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/25 pointer-events-none" />
         </div>
@@ -199,9 +199,9 @@ function CarCard({ car, index }: { car: (typeof vehicles)[0]; index: number }) {
               {categoryLabels[car.category] || car.category}
             </span>
             {car.newArrival && (
-              <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-crimson text-white text-[9px] font-black uppercase tracking-widest">
+              <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand text-white text-[9px] font-black uppercase tracking-widest">
                 <Zap className="w-2.5 h-2.5" fill="currentColor" />
-                New
+                Nouveau
               </span>
             )}
           </div>
@@ -214,7 +214,7 @@ function CarCard({ car, index }: { car: (typeof vehicles)[0]; index: number }) {
             <p className="text-[10px] font-semibold text-white/30 uppercase tracking-widest mb-1">
               {car.make} · {car.year}
             </p>
-            <h3 className="text-base font-black text-white group-hover:text-crimson-bright transition-colors duration-300 leading-tight">
+            <h3 className="text-base font-black text-white group-hover:text-brand-bright transition-colors duration-300 leading-tight">
               {car.model}
             </h3>
             <p className="text-[11px] text-white/30 mt-0.5">{car.color}</p>
@@ -223,8 +223,8 @@ function CarCard({ car, index }: { car: (typeof vehicles)[0]; index: number }) {
           {/* Specs row */}
           <div className="flex items-center gap-4 py-3 border-y border-white/5">
             <div className="flex items-center gap-1.5">
-              <Gauge className="w-3.5 h-3.5 text-crimson" strokeWidth={1.5} />
-              <span className="text-[11px] font-bold text-white/70">{car.horsepower} HP</span>
+              <Gauge className="w-3.5 h-3.5 text-brand" strokeWidth={1.5} />
+              <span className="text-[11px] font-bold text-white/70">{car.horsepower} CV</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-white/30" strokeWidth={1.5} />
@@ -239,18 +239,18 @@ function CarCard({ car, index }: { car: (typeof vehicles)[0]; index: number }) {
           {/* Price + CTA */}
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[9px] text-white/20 uppercase tracking-wider mb-0.5">Starting at</p>
+              <p className="text-[9px] text-white/20 uppercase tracking-wider mb-0.5">À partir de</p>
               <span className="text-lg font-black text-white">{formatPrice(car.price)}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-white/30 group-hover:text-crimson transition-colors duration-300">
-              <span className="uppercase tracking-wider">View</span>
+            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-white/30 group-hover:text-brand transition-colors duration-300">
+              <span className="uppercase tracking-wider">Voir</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </div>
         </div>
 
-        {/* Bottom crimson accent line */}
-        <div className="h-px w-0 bg-crimson group-hover:w-full transition-all duration-500 ease-out" />
+        {/* Bottom brand accent line */}
+        <div className="h-px w-0 bg-brand group-hover:w-full transition-all duration-500 ease-out" />
       </Link>
     </AnimatedSection>
   );
@@ -342,28 +342,28 @@ export default function InventoryPageClient() {
       {/* ─── Page Hero ─── */}
       <div className="relative pt-32 pb-16 overflow-hidden border-b border-white/5">
         {/* Ambient glow */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-crimson/5 blur-[180px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand/5 blur-[180px] rounded-full pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="flex items-center gap-3 mb-5">
-              <span className="block w-8 h-px bg-crimson" />
-              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-crimson">Our Collection</span>
+              <span className="block w-8 h-px bg-brand" />
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-brand">Notre Collection</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
                 <h1 className="text-5xl sm:text-6xl font-black text-white tracking-tight leading-none">
-                  The <span className="text-white/20">Models</span>
+                  Les <span className="text-white/20">Modèles</span>
                 </h1>
                 <p className="mt-3 text-sm text-white/35 leading-relaxed max-w-md">
-                  Every vehicle handpicked for performance, rarity, and uncompromising quality.
+                  Chaque véhicule est sélectionné pour sa performance, sa rareté et sa qualité sans compromis.
                 </p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <span className="text-3xl font-black text-white tabular-nums">{filteredVehicles.length}</span>
                 <span className="text-sm text-white/30">
-                  vehicle{filteredVehicles.length !== 1 ? "s" : ""}<br />available
+                  véhicule{filteredVehicles.length !== 1 ? "s" : ""}<br />disponible{filteredVehicles.length !== 1 ? "s" : ""}
                 </span>
               </div>
             </div>
@@ -376,21 +376,21 @@ export default function InventoryPageClient() {
               className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-[11px] font-semibold uppercase tracking-widest text-white/50 hover:text-white hover:border-white/20 transition-all"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
-              Filters
+              Filtres
             </button>
           </div>
 
           {/* Sort & Quick Filter Bar */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 py-4 border-y border-white/5">
             <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-0.5 w-full sm:w-auto">
-              <span className="text-[10px] font-black text-white/20 uppercase tracking-widest mr-2 shrink-0">Popular:</span>
+              <span className="text-[10px] font-black text-white/20 uppercase tracking-widest mr-2 shrink-0">Populaire :</span>
               {["Porsche", "Lamborghini", "Ferrari", "BMW"].map((m) => (
                 <button
                   key={m}
                   onClick={() => setFilters({ ...filters, make: filters.make === m ? "" : m })}
                   className={`shrink-0 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
                     filters.make === m 
-                      ? "bg-crimson text-white shadow-[0_0_15px_oklch(60%_0.25_20/0.3)]" 
+                      ? "bg-brand text-white shadow-[0_0_15px_oklch(65%_0.22_55/0.3)]" 
                       : "bg-white/4 border border-white/8 text-white/35 hover:text-white hover:border-white/15"
                   }`}
                 >
@@ -400,18 +400,18 @@ export default function InventoryPageClient() {
             </div>
 
             <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-              <span className="text-[10px] font-black text-white/20 uppercase tracking-widest hidden sm:block">Sort By:</span>
+              <span className="text-[10px] font-black text-white/20 uppercase tracking-widest hidden sm:block">Trier Par :</span>
               <div className="relative">
                 <select
                   value={filters.sort}
                   onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
-                  className="bg-transparent text-[11px] font-bold text-white uppercase tracking-widest focus:outline-none appearance-none pr-6 cursor-pointer hover:text-crimson transition-colors"
+                  className="bg-transparent text-[11px] font-bold text-white uppercase tracking-widest focus:outline-none appearance-none pr-6 cursor-pointer hover:text-brand transition-colors"
                 >
-                  <option value="newest">Newest Arrivals</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="hp-desc">Horsepower: High First</option>
-                  <option value="year-desc">Year: Newest First</option>
+                  <option value="newest">Nouveautés</option>
+                  <option value="price-asc">Prix : Croissant</option>
+                  <option value="price-desc">Prix : Décroissant</option>
+                  <option value="hp-desc">Puissance : Décroissante</option>
+                  <option value="year-desc">Année : La plus récente</option>
                 </select>
                 <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 text-white/25 pointer-events-none" />
               </div>
@@ -466,15 +466,15 @@ export default function InventoryPageClient() {
                 <div className="w-16 h-16 rounded-2xl bg-white/4 border border-white/8 flex items-center justify-center mb-6">
                   <Search className="w-7 h-7 text-white/20" />
                 </div>
-                <h3 className="text-xl font-black text-white mb-2">No Vehicles Found</h3>
+                <h3 className="text-xl font-black text-white mb-2">Aucun véhicule trouvé</h3>
                 <p className="text-sm text-white/30 mb-8 max-w-xs">
-                  No vehicles match your current filters. Try adjusting your search.
+                  Aucun véhicule ne correspond à vos filtres. Essayez d&apos;ajuster votre recherche.
                 </p>
                 <button
                   onClick={() => setFilters({ make: "", category: "", minPrice: "", maxPrice: "", search: "", sort: "newest" })}
-                  className="px-6 py-3 bg-crimson text-white rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-crimson-bright transition-all"
+                  className="px-6 py-3 bg-brand text-white rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-brand-bright transition-all"
                 >
-                  Clear All Filters
+                  Effacer tous les filtres
                 </button>
               </div>
             )}

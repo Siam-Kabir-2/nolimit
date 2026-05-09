@@ -5,17 +5,17 @@ import { Instagram, Youtube, ArrowRight, MapPin, Phone, Mail } from "lucide-reac
 
 const footerLinks = {
   inventory: [
-    { label: "All Vehicles", href: "/inventory" },
-    { label: "New Arrivals", href: "/inventory?sort=newest" },
-    { label: "Supercars", href: "/inventory?category=supercar" },
-    { label: "Luxury", href: "/inventory?category=luxury" },
-    { label: "Electric", href: "/inventory?category=electric" },
+    { label: "Tous les Véhicules", href: "/inventory" },
+    { label: "Nouveautés", href: "/inventory?sort=newest" },
+    { label: "Supercars", href: "/inventory" },
+    { label: "Luxe", href: "/inventory" },
+    { label: "Électrique", href: "/inventory" },
   ],
   services: [
-    { label: "Trade-In", href: "/sell-my-car" },
-    { label: "Enquire", href: "/finance" },
-    { label: "Test Drive", href: "/finance" },
-    { label: "Financing", href: "/finance" },
+    { label: "Reprise", href: "/sell-my-car" },
+    { label: "S'informer", href: "/finance" },
+    { label: "Essai Routier", href: "/finance" },
+    { label: "Financement", href: "/finance" },
   ],
 };
 
@@ -53,20 +53,20 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="relative bg-carbon overflow-hidden pb-32 lg:pb-0">
-      {/* Top crimson accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-crimson/50 to-transparent" />
+      {/* Top brand accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand/50 to-transparent" />
 
       {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-48 bg-crimson/3 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-48 bg-brand/3 blur-[100px] rounded-full pointer-events-none" />
 
       {/* Newsletter bar */}
       <div className="relative border-b border-white/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="text-[10px] font-semibold text-crimson uppercase tracking-[0.4em] mb-1">Stay in the Loop</p>
+              <p className="text-[10px] font-semibold text-brand uppercase tracking-[0.4em] mb-1">Restez Informé</p>
               <h3 className="text-xl font-black text-white tracking-tight">
-                New arrivals. First to know.
+                Nouveautés. Soyez le premier à savoir.
               </h3>
             </div>
             <form
@@ -75,12 +75,12 @@ export default function Footer() {
             >
               <input
                 type="email"
-                placeholder="your@email.com"
-                className="flex-1 sm:w-64 px-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-crimson/40 transition-all"
+                placeholder="votre@email.com"
+                className="flex-1 sm:w-64 px-4 py-3 bg-white/4 border border-white/8 rounded-xl text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-brand/40 transition-all"
               />
               <button
                 type="submit"
-                className="px-5 py-3 bg-crimson hover:bg-crimson-bright text-white text-[11px] font-bold uppercase tracking-widest rounded-xl transition-all hover:shadow-[0_0_20px_oklch(60%_0.25_20/0.4)] active:scale-95 shrink-0"
+                className="px-5 py-3 bg-brand hover:bg-brand-bright text-white text-[11px] font-bold uppercase tracking-widest rounded-xl transition-all hover:shadow-[0_0_20px_oklch(65%_0.22_55/0.4)] active:scale-95 shrink-0"
               >
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -97,11 +97,11 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="inline-block">
               <span className="text-3xl font-black tracking-[0.15em] text-white uppercase italic">
-                NO<span className="text-crimson">LIMIT</span>
+                NO<span className="text-brand">LIMIT</span>
               </span>
             </Link>
             <p className="text-sm text-white/35 leading-relaxed max-w-[220px]">
-              Premium machines for those who refuse to compromise. Every vehicle handpicked.
+              Des machines d'exception pour ceux qui refusent les compromis. Chaque véhicule est rigoureusement sélectionné.
             </p>
             {/* Socials */}
             <div className="flex gap-2.5">
@@ -110,7 +110,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/4 border border-white/8 flex items-center justify-center text-white/35 hover:text-white hover:bg-crimson/15 hover:border-crimson/30 transition-all duration-300"
+                  className="w-9 h-9 rounded-xl bg-white/4 border border-white/8 flex items-center justify-center text-white/35 hover:text-white hover:bg-brand/15 hover:border-brand/30 transition-all duration-300"
                 >
                   <Icon />
                 </a>
@@ -121,7 +121,7 @@ export default function Footer() {
           {/* Inventory */}
           <div>
             <h3 className="text-[9px] font-black text-white/25 uppercase tracking-[0.35em] mb-5">
-              Inventory
+              Inventaire
             </h3>
             <ul className="space-y-3">
               {footerLinks.inventory.map((link) => (
@@ -130,7 +130,7 @@ export default function Footer() {
                     href={link.href}
                     className="text-sm text-white/40 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   >
-                    <span className="block w-0 h-px bg-crimson group-hover:w-3 transition-all duration-300" />
+                    <span className="block w-0 h-px bg-brand group-hover:w-3 transition-all duration-300" />
                     {link.label}
                   </Link>
                 </li>
@@ -150,7 +150,7 @@ export default function Footer() {
                     href={link.href}
                     className="text-sm text-white/40 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   >
-                    <span className="block w-0 h-px bg-crimson group-hover:w-3 transition-all duration-300" />
+                    <span className="block w-0 h-px bg-brand group-hover:w-3 transition-all duration-300" />
                     {link.label}
                   </Link>
                 </li>
@@ -165,19 +165,19 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-crimson shrink-0 mt-0.5" strokeWidth={1.5} />
+                <MapPin className="w-4 h-4 text-brand shrink-0 mt-0.5" strokeWidth={1.5} />
                 <span className="text-sm text-white/40 leading-relaxed">
                   1200 Velocity Drive<br />Beverly Hills, CA 90210
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-crimson shrink-0" strokeWidth={1.5} />
+                <Phone className="w-4 h-4 text-brand shrink-0" strokeWidth={1.5} />
                 <a href="tel:+18001234567" className="text-sm text-white/40 hover:text-white transition-colors">
                   +1 (800) NO-LIMIT
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-crimson shrink-0" strokeWidth={1.5} />
+                <Mail className="w-4 h-4 text-brand shrink-0" strokeWidth={1.5} />
                 <a href="mailto:hello@nolimitautos.com" className="text-sm text-white/40 hover:text-white transition-colors">
                   hello@nolimitautos.com
                 </a>
@@ -189,10 +189,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[11px] text-white/20 tracking-wider">
-            © 2026 NoLimit Autos. All rights reserved.
+            © 2026 NoLimit Autos. Tous droits réservés.
           </p>
           <div className="flex gap-6 text-[11px] text-white/20">
-            {["Privacy", "Terms", "Sitemap"].map((item) => (
+            {["Confidentialité", "Conditions", "Plan du site"].map((item) => (
               <a key={item} href="#" className="hover:text-white/50 transition-colors tracking-wider">
                 {item}
               </a>
